@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>异常和模块总结 | 个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="异常 1.异常捕获 123456789101112131415161718192021异常 -  程序执行过程中出现错误（报错）异常捕获  - 让程序出现异常的时候程序不崩溃，可以接着往后执行什么时候需要捕获异常  - 明知道某个位置程序可能会出现异常但是又没有办法通过程序控制的时候就使用异常捕获1）语法一：捕获所有异常try：    代码块1except:    代码块2说明：try：  -关键">
+<meta property="og:type" content="article">
+<meta property="og:title" content="异常和模块总结">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;19&#x2F;%E5%BC%82%E5%B8%B8%E5%92%8C%E6%A8%A1%E5%9D%97%E6%80%BB%E7%BB%93&#x2F;index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="异常 1.异常捕获 123456789101112131415161718192021异常 -  程序执行过程中出现错误（报错）异常捕获  - 让程序出现异常的时候程序不崩溃，可以接着往后执行什么时候需要捕获异常  - 明知道某个位置程序可能会出现异常但是又没有办法通过程序控制的时候就使用异常捕获1）语法一：捕获所有异常try：    代码块1except:    代码块2说明：try：  -关键">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-20T02:12:12.051Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">个人博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-异常和模块总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/19/%E5%BC%82%E5%B8%B8%E5%92%8C%E6%A8%A1%E5%9D%97%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2019-09-19T09:13:34.969Z" itemprop="datePublished">2019-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      异常和模块总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>异常</strong></p>
+<p>1.异常捕获</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">异常 -  程序执行过程中出现错误（报错）</span><br><span class="line"></span><br><span class="line">异常捕获  - 让程序出现异常的时候程序不崩溃，可以接着往后执行</span><br><span class="line">什么时候需要捕获异常  - 明知道某个位置程序可能会出现异常但是又没有办法通过程序控制的时候就使用异常捕获</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>）语法一：捕获所有异常</span><br><span class="line"><span class="keyword">try</span>：</span><br><span class="line">    代码块<span class="number">1</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    代码块<span class="number">2</span></span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line"><span class="keyword">try</span>：  -关键字，固定写法</span><br><span class="line">代码块<span class="number">1</span>  - 和<span class="keyword">try</span>保持一个缩进的一条或者多条语句；需要捕获异常的语句</span><br><span class="line"><span class="keyword">except</span>    - 关键字，固定写法</span><br><span class="line">代码块<span class="number">2</span>   -和<span class="keyword">except</span>保持一个缩进的一条或者多条语句,出现异常后对异常进行处理的代码</span><br><span class="line"></span><br><span class="line">执行过程：先执行代码块<span class="number">1</span>，如果执行代码块<span class="number">1</span>的时候出现异常，程序不会崩溃（不报错），直接执行代码块<span class="number">2</span>执行完代码块<span class="number">2</span>再执行其他语句</span><br><span class="line">        如果执行代码块<span class="number">1</span>没有异常，就直接执行后面的其他语句</span><br><span class="line"> 如果程序出现异常，那么程序就会直接结束，不在执行后面的其他语法</span><br></pre></td></tr></table></figure>
+
+<p><strong>语法2（捕获指定的异常）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>：</span><br><span class="line">    代码块<span class="number">1</span></span><br><span class="line"><span class="keyword">except</span> 异常类型：</span><br><span class="line">    代码块<span class="number">2</span></span><br><span class="line">其他语句</span><br><span class="line"></span><br><span class="line">执行过程：先执行代码块<span class="number">1</span>，如果没有异常 就直接执行后面的其他语句，</span><br><span class="line">        如果出现异常，并且异常的类型和<span class="keyword">except</span>后面的异常类型一样程序不崩溃直接执行代码块<span class="number">2</span> 再执行后面的其他语句</span><br><span class="line">        如果出现异常，并且异常的类型和<span class="keyword">except</span>后面的异常类型不一样程序崩溃</span><br></pre></td></tr></table></figure>
+
+<p><strong>语法三、语法四：同时捕获指定的多种异常</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>：</span><br><span class="line">    代码块<span class="number">1</span></span><br><span class="line"><span class="keyword">except</span>（异常类型<span class="number">1</span>，异常类型<span class="number">2</span>，...):</span><br><span class="line">    代码块<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>：</span><br><span class="line">    代码块<span class="number">1</span></span><br><span class="line"><span class="keyword">except</span> 异常类型<span class="number">1</span>：</span><br><span class="line">    代码块<span class="number">11</span></span><br><span class="line"><span class="keyword">except</span> 异常类型<span class="number">2</span>：</span><br><span class="line">    代码块<span class="number">22</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>finally关键字</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">以上所有的语法结构的最后都可以加一个finally，加完后不会影响原结构的功能特点：try后面的代码块不管发生什么情况 ，finally后面的代码块都会执行</span><br></pre></td></tr></table></figure>
+
+<p>抛出异常    - 主动让程序崩溃</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">raise</span> 异常类型</span><br></pre></td></tr></table></figure>
+
+<p><strong>什么是模块</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python 中一个py文件就是一个模块，模块名就是py文件的文件名</span><br></pre></td></tr></table></figure>
+
+<p><strong>模块间的相互引用</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">怎么在一个模块中去使用 另一个模块的内容：导入模块</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> 模块名  - 导入指定模块导入后可以再当前模块中使用指定模块中所有的全局变量，</span><br><span class="line">                以’模块名.变量名‘的方式去使用</span><br><span class="line"><span class="keyword">from</span> 模块名 <span class="keyword">import</span> 变量名，变量名<span class="number">2</span>，变量名<span class="number">3</span>，...- 导入指定的模块，导入后可以在当前模块中使用 指定的全局变量</span><br><span class="line">                                            变量直接使用，不用加前缀 </span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> 模块名 <span class="keyword">import</span> *   - 导入指定模块导入后可以再当前模块中使用指定模块中所有的全局变量，</span><br><span class="line">                        直接使用不用加前缀</span><br><span class="line">                        </span><br><span class="line"><span class="keyword">import</span> 模块名 <span class="keyword">as</span> 新模块名     - 导入指定的模块，导入后给这个模块重新命名；在当前模块中应使用新的模块名     </span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> 模块名 <span class="keyword">import</span> 变量名 <span class="keyword">as</span> 新变量名，变量名<span class="number">2</span> <span class="keyword">as</span> 新变量名<span class="number">2</span>，变量名<span class="number">3</span> <span class="keyword">as</span> 新变量名</span><br></pre></td></tr></table></figure>
+
+<p><strong>导入模块的原理</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">当我们通过<span class="keyword">import</span>或者form-<span class="keyword">import</span>去导入一个模块的时候 会将这个模块中的代码全部执行一遍</span><br><span class="line"></span><br><span class="line">怎么导入模块的时候选择性的执行部分代码：</span><br><span class="line"></span><br><span class="line">代码段<span class="number">1</span>    -在被导入的时候会被执行的代码</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    代码段<span class="number">2</span>    -在被导入的时候不会执行的代码，但是在当前模块直接执行的时候又会被执行</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">原理：当创建模块的时候每个模块中都有一个__name__属性，用来保存当前模块的模块名。它的值默认就是py文件的文件名。</span><br><span class="line">当直接运行这个模块的时候，模块中的__name__属性会临时变成<span class="string">'__main__'</span></span><br></pre></td></tr></table></figure>
+
+<p>hashlib</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">hashlib是python提供用来产生摘要算法的模块。摘要算法又叫哈希算法、离散算法。例如：md5、sha相关算法</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>）哈希算法的特点：</span><br><span class="line">a.该算法不可逆（根据摘要（密文）不能获取/推导出原文）</span><br><span class="line">b.使用相同算法对相同的数据加密后的结果是一样的</span><br><span class="line">c.不同长度的数据通过相同的算法加密后的密文的长度是一样的</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>）怎么生成数据对应的摘要（怎么加密）</span><br><span class="line"></span><br><span class="line">哈希对象.update（数据） -指定加密数据，数据必须是二进制数据</span><br><span class="line">摘要 = 哈希对象.hexdigest() </span><br><span class="line">补充：二进制数据和字符串的相互转换</span><br><span class="line">二进制数据：bytes</span><br><span class="line">字符串转二进制：bytes(字符串，encoding=<span class="string">'utf-8'</span>)/字符串.encode()</span><br><span class="line">二进制转字符串：str（二进制，encoding=<span class="string">'utf-8'</span>)/二进制.decode(encoding=<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>什么是时间戳</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">时间戳指的是一个时间到<span class="number">1970</span>年<span class="number">1</span>月<span class="number">1</span>日<span class="number">0</span>点<span class="number">0</span>分<span class="number">0</span>秒之间的时间差用秒表示</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/19/%E5%BC%82%E5%B8%B8%E5%92%8C%E6%A8%A1%E5%9D%97%E6%80%BB%E7%BB%93/" data-id="ck236g4br000d24t69e7waeuf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/20/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          字符串的相关方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/18/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">文件操作总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/23/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/22/%E5%B8%B8%E7%94%A8Linux%E7%B3%BB%E7%BB%9F%E6%8C%87%E4%BB%A4/">常用Linux系统指令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/26/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%80%BB%E7%BB%93/">正则表达式总结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/23/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E6%80%BB%E7%BB%93/">类和对象总结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/20/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95/">字符串的相关方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
